@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "UAS dummy.sln"
+    "dotnet.defaultSolution": "UAS-CGA-Architecture.sln"
 }

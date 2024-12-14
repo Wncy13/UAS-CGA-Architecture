@@ -3,9 +3,28 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+
+[System.Serializable]
+    public class PlacedObject
+    {
+        public Vector3Int position;
+        public int objectID; 
+    }
 
 public class PlacementSystem : MonoBehaviour
 {
+    public Camera mainCamera;
+    public Camera rightCamera;
+    public Camera backCamera;
+    public Camera leftCamera;
+    public Camera frontCamera;
+    public Button nextButton;
+    public Button previousButton;
+
+    private List<Camera> cameras;
+    private int currentCameraIndex = 0;
+
     [SerializeField]
     private InputManager inputManager;
     [SerializeField]
@@ -37,11 +56,35 @@ public class PlacementSystem : MonoBehaviour
     [SerializeField]
     private SoundFeedback soundFeedback;
 
+    private List<PlacedObject> placedObjects = new List<PlacedObject>();
+
     private void Start()
     {
+        cameras = new List<Camera> {mainCamera, rightCamera, backCamera, leftCamera, frontCamera};
+        nextButton.onClick.AddListener(SwitchToNextCamera);
+        previousButton.onClick.AddListener(SwitchToPreviousCamera);
         gridVisualization.SetActive(false);
         floorData = new();
         furnitureData = new();
+    }
+
+    private void SwitchToPreviousCamera(){
+        cameras[currentCameraIndex].gameObject.SetActive(false);
+        currentCameraIndex = (currentCameraIndex - 1 + cameras.Count) % cameras.Count;
+        cameras[currentCameraIndex].gameObject.SetActive(true);
+    }
+
+        private void SwitchToNextCamera()
+    {
+        cameras[currentCameraIndex].gameObject.SetActive(false);
+        currentCameraIndex = (currentCameraIndex + 1) % cameras.Count;
+        cameras[currentCameraIndex].gameObject.SetActive(true);
+    }
+
+    private  void nextCamera(Camera nextCamera)
+    {
+        nextCamera.gameObject.SetActive(true);
+        mainCamera.gameObject.SetActive(false);
     }
 
     public void StartPlacement(int ID)
@@ -67,6 +110,11 @@ public class PlacementSystem : MonoBehaviour
         buildingState = new RemovingState(grid, preview, floorData, furnitureData, objectPlacer, soundFeedback);
         inputManager.OnClicked += PlaceStructure;
         inputManager.OnExit += StopPlacement;
+    }
+
+    public void donePlacement(){
+        StopPlacement();
+        gridVisualization.SetActive(false);
     }
 
     private void PlaceStructure()

@@ -7,6 +7,22 @@ public class GridData
 {
     Dictionary<Vector3Int, PlacementData> placedObjects = new();
 
+    public List<PlacementData> GetAllPlacedObjects()
+{
+    return new List<PlacementData>(placedObjects.Values);
+}
+
+public void LoadPlacedObjects(List<PlacementData> placementData)
+{
+    foreach (var data in placementData)
+    {
+        foreach (var pos in data.occupiedPositions)
+        {
+            placedObjects[pos] = data;
+        }
+    }
+}
+
     public void AddObjectAt(Vector3Int gridPosition,
                             Vector2Int objectSize,
                             int ID,
