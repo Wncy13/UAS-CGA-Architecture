@@ -113,32 +113,35 @@ public class GameController : MonoBehaviour
 
     void HandleCameraMovement()
     {
+        Rigidbody rb = playerCamera.GetComponent<Rigidbody>();
+
         // Pergerakan posisi kamera
-        float horizontalMovement = Input.GetAxis("Horizontal") * movementSpeed * Time.deltaTime; // A dan D untuk kiri dan kanan
-        float verticalMovement = Input.GetAxis("Vertical") * movementSpeed * Time.deltaTime; // W dan S untuk maju dan mundur
+        float horizontalMovement = Input.GetAxis("Horizontal") * movementSpeed * Time.fixedDeltaTime; // A dan D untuk kiri/kanan
+        float verticalMovement = Input.GetAxis("Vertical") * movementSpeed * Time.fixedDeltaTime; // W dan S untuk maju/mundur
 
         // Mendapatkan arah pergerakan berdasarkan orientasi kamera
         Vector3 forwardMovement = playerCamera.transform.forward * verticalMovement;
         Vector3 rightMovement = playerCamera.transform.right * horizontalMovement;
 
-        // Menambahkan pergerakan pada posisi kamera
+        // Menggabungkan semua pergerakan
         Vector3 movement = forwardMovement + rightMovement;
-        movement.y = 0; // Menonaktifkan pergerakan vertikal (naik/turun)
-        playerCamera.transform.position += movement;
+
+        // Gerakkan kamera dengan Rigidbody
+        rb.MovePosition(rb.position + movement);
 
         // Rotasi kamera dengan mouse
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * 4 * Time.deltaTime; // Gerakan mouse horizontal
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * 4 * Time.deltaTime; // Gerakan mouse vertikal
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        // Mengatur rotasi horizontal (yaw)
+        // Rotasi horizontal (yaw)
         playerCamera.transform.Rotate(Vector3.up * mouseX, Space.World);
 
-        // Mengatur rotasi vertikal (pitch) dengan perbaikan bug
+        // Rotasi vertikal (pitch)
         Vector3 currentRotation = playerCamera.transform.localEulerAngles;
         float pitch = currentRotation.x;
-        if (pitch > 180) pitch -= 360; // Mengatasi rotasi Euler yang tiba-tiba menjadi sangat besar
+        if (pitch > 180) pitch -= 360;
 
-        float newPitch = Mathf.Clamp(pitch - mouseY, -89f, 89f); // Membatasi pitch antara -89 dan 89 derajat
+        float newPitch = Mathf.Clamp(pitch - mouseY, -89f, 89f);
         playerCamera.transform.localEulerAngles = new Vector3(newPitch, currentRotation.y, 0);
     }
 
