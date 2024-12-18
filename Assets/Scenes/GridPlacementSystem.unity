@@ -10661,10 +10661,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32b7a405d8ccaa4eb868116511c514e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 1804574290}
-  rightCamera: {fileID: 195092829}
-  backCamera: {fileID: 40094264}
-  leftCamera: {fileID: 1925813979}
+  mainCamera: {fileID: 0}
+  rightCamera: {fileID: 0}
+  backCamera: {fileID: 0}
+  leftCamera: {fileID: 0}
   frontCamera: {fileID: 0}
   nextButton: {fileID: 0}
   previousButton: {fileID: 0}
