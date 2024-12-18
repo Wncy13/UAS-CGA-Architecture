@@ -24,8 +24,14 @@ public class InputManager : MonoBehaviour
             OnExit?.Invoke();
     }
 
+    // public bool IsRightMouseButtonPressed()
+    // {
+    //     return Input.GetMouseButtonDown(1); // 1 adalah tombol kanan mouse
+    //     Debug.Log("uda klik kanan");
+    // }
+
     public bool IsPointerOverUI()
-        => EventSystem.current.IsPointerOverGameObject();
+        => EventSystem.current.IsPointerOverGameObject();   
 
     public Vector3 GetSelectedMapPosition()
     {
