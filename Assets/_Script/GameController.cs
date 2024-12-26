@@ -113,6 +113,7 @@ public class GameController : MonoBehaviour
 
     void HandleCameraMovement()
     {
+        Debug.Log("ini handlecamera");
         Rigidbody rb = playerCamera.GetComponent<Rigidbody>();
 
         // Pergerakan posisi kamera

@@ -12019,6 +12019,7 @@ MonoBehaviour:
   backCamera: {fileID: 40094264}
   leftCamera: {fileID: 1925813979}
   frontCamera: {fileID: 1804574290}
+  activeCamera: {fileID: 0}
   nextButton: {fileID: 7897775576276188144}
   previousButton: {fileID: 820907145}
   inputManager: {fileID: 704733318}
@@ -12032,6 +12033,7 @@ MonoBehaviour:
   preview: {fileID: 2138379249}
   objectPlacer: {fileID: 898902461}
   soundFeedback: {fileID: 1416467428}
+  rotationSpeed: 90
 --- !u!82 &1118608124
 AudioSource:
   m_ObjectHideFlags: 0
