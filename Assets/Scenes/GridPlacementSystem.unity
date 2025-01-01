@@ -4980,7 +4980,7 @@ PrefabInstance:
     - target: {fileID: 7401616350368380843, guid: 8ece0f0faf8317849a46eacc430a72b1,
         type: 3}
       propertyPath: m_Name
-      value: Kasur
+      value: Door
       objectReference: {fileID: 0}
     - target: {fileID: 7897775575725484003, guid: 8ece0f0faf8317849a46eacc430a72b1,
         type: 3}
@@ -5030,18 +5030,19 @@ PrefabInstance:
     - target: {fileID: 8976257542768408186, guid: 8ece0f0faf8317849a46eacc430a72b1,
         type: 3}
       propertyPath: m_Type
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8976257542768408186, guid: 8ece0f0faf8317849a46eacc430a72b1,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 21300000, guid: 8c202f9bf7f124e628092b7a656ea635,
+        type: 3}
     - target: {fileID: 9027273355869731006, guid: 8ece0f0faf8317849a46eacc430a72b1,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1087671248, guid: a0b6a4aacac1d274eb7c54760c3472b1,
+      objectReference: {fileID: 21300000, guid: 8c202f9bf7f124e628092b7a656ea635,
         type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6880,7 +6881,7 @@ PrefabInstance:
     - target: {fileID: 7401616350368380843, guid: 8ece0f0faf8317849a46eacc430a72b1,
         type: 3}
       propertyPath: m_Name
-      value: Meja
+      value: Window
       objectReference: {fileID: 0}
     - target: {fileID: 7897775575725484003, guid: 8ece0f0faf8317849a46eacc430a72b1,
         type: 3}
@@ -6925,18 +6926,19 @@ PrefabInstance:
     - target: {fileID: 8976257542768408186, guid: 8ece0f0faf8317849a46eacc430a72b1,
         type: 3}
       propertyPath: m_Type
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8976257542768408186, guid: 8ece0f0faf8317849a46eacc430a72b1,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 21300000, guid: d446e3196f3754145a1a5a430f3762d6,
+        type: 3}
     - target: {fileID: 9027273355869731006, guid: 8ece0f0faf8317849a46eacc430a72b1,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1540450446, guid: a0b6a4aacac1d274eb7c54760c3472b1,
+      objectReference: {fileID: 21300000, guid: d446e3196f3754145a1a5a430f3762d6,
         type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8379,6 +8381,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1486668657}
     m_Modifications:
+    - target: {fileID: 3101073841027178503, guid: 8ece0f0faf8317849a46eacc430a72b1,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101073841027178503, guid: 8ece0f0faf8317849a46eacc430a72b1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101073841027178503, guid: 8ece0f0faf8317849a46eacc430a72b1,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101073841027178503, guid: 8ece0f0faf8317849a46eacc430a72b1,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6175041104697196024, guid: 8ece0f0faf8317849a46eacc430a72b1,
         type: 3}
       propertyPath: m_Pivot.x
@@ -8524,7 +8546,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 4bc301c00080dd54387f50a8db8d4e5d,
+      objectReference: {fileID: 21300000, guid: 053cd158a49014178a9aed0ba4d290e9,
         type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12976,6 +12998,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1600060752}
     m_Modifications:
+    - target: {fileID: 3101073841027178503, guid: 8ece0f0faf8317849a46eacc430a72b1,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101073841027178503, guid: 8ece0f0faf8317849a46eacc430a72b1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101073841027178503, guid: 8ece0f0faf8317849a46eacc430a72b1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 6175041104697196024, guid: 8ece0f0faf8317849a46eacc430a72b1,
         type: 3}
       propertyPath: m_Pivot.x
@@ -13140,7 +13177,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f9d44df2ccc85c1468399be8a02296a7,
+      objectReference: {fileID: 21300000, guid: 8ebd8328d956e4ee08269dadf107fcd9,
         type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14609,7 +14646,7 @@ PrefabInstance:
     - target: {fileID: 7401616350368380843, guid: 8ece0f0faf8317849a46eacc430a72b1,
         type: 3}
       propertyPath: m_Name
-      value: Daun Taman
+      value: Roof
       objectReference: {fileID: 0}
     - target: {fileID: 7897775575725484003, guid: 8ece0f0faf8317849a46eacc430a72b1,
         type: 3}
@@ -14665,7 +14702,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1540450446, guid: a0b6a4aacac1d274eb7c54760c3472b1,
+      objectReference: {fileID: 21300000, guid: 712d7129681e14995a4c7375c2e635de,
         type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17964,7 +18001,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c0fbe2fcd39dffd40aaef03a9262f980,
+      objectReference: {fileID: 21300000, guid: 131c820aa634a4379b70fa91f2368a67,
         type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19398,7 +19435,7 @@ PrefabInstance:
     - target: {fileID: 7401616350368380843, guid: 8ece0f0faf8317849a46eacc430a72b1,
         type: 3}
       propertyPath: m_Name
-      value: Pohon
+      value: HalfWall
       objectReference: {fileID: 0}
     - target: {fileID: 7897775575725484003, guid: 8ece0f0faf8317849a46eacc430a72b1,
         type: 3}
@@ -19454,7 +19491,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1540450446, guid: a0b6a4aacac1d274eb7c54760c3472b1,
+      objectReference: {fileID: 21300000, guid: 3b52deedd9bed4680946c548144d38b6,
         type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20921,7 +20958,7 @@ PrefabInstance:
     - target: {fileID: 7401616350368380843, guid: 8ece0f0faf8317849a46eacc430a72b1,
         type: 3}
       propertyPath: m_Name
-      value: Batu
+      value: RoofSide
       objectReference: {fileID: 0}
     - target: {fileID: 7897775575725484003, guid: 8ece0f0faf8317849a46eacc430a72b1,
         type: 3}
@@ -20977,7 +21014,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1540450446, guid: a0b6a4aacac1d274eb7c54760c3472b1,
+      objectReference: {fileID: 21300000, guid: 4a52e9d8c34124a4ca1342f0b5f72057,
         type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22024,7 +22061,7 @@ PrefabInstance:
     - target: {fileID: 7401616350368380843, guid: 8ece0f0faf8317849a46eacc430a72b1,
         type: 3}
       propertyPath: m_Name
-      value: Kursi
+      value: WallCorner
       objectReference: {fileID: 0}
     - target: {fileID: 7897775575725484003, guid: 8ece0f0faf8317849a46eacc430a72b1,
         type: 3}
@@ -22070,7 +22107,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 725212207, guid: a0b6a4aacac1d274eb7c54760c3472b1,
+      objectReference: {fileID: 21300000, guid: 0623f2338972f498a96209f63b28155f,
         type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -24635,7 +24672,7 @@ PrefabInstance:
     - target: {fileID: 7401616350368380843, guid: 8ece0f0faf8317849a46eacc430a72b1,
         type: 3}
       propertyPath: m_Name
-      value: Karpet
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 7897775575725484003, guid: 8ece0f0faf8317849a46eacc430a72b1,
         type: 3}
@@ -24701,7 +24738,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 373185385, guid: a0b6a4aacac1d274eb7c54760c3472b1,
+      objectReference: {fileID: 21300000, guid: 2610c3f2c45c349548c8dadcc56cd848,
         type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
