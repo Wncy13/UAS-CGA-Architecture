@@ -25,7 +25,7 @@ MonoBehaviour:
       type: 3}
   - <Name>k__BackingField: Door
     <ID>k__BackingField: 2
-    <Size>k__BackingField: {x: 2, y: 2}
+    <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 919132149155446097, guid: 8de9e56c5b54d4e4b95d88cd603d011d,
       type: 3}
   - <Name>k__BackingField: Window
@@ -33,20 +33,20 @@ MonoBehaviour:
     <Size>k__BackingField: {x: 2, y: 1}
     <Prefab>k__BackingField: {fileID: 919132149155446097, guid: f01ad31586a979d428d81af7506204eb,
       type: 3}
-  - <Name>k__BackingField: Tree
+  - <Name>k__BackingField: Half-Wall
     <ID>k__BackingField: 4
-    <Size>k__BackingField: {x: 1, y: 3}
-    <Prefab>k__BackingField: {fileID: 7490571266767458987, guid: 4960b05bef211be459ba02351badeb20,
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 919132149155446097, guid: 0ef2464dfa014b1438debc20db5a11d4,
       type: 3}
-  - <Name>k__BackingField: Bush
+  - <Name>k__BackingField: Roof
     <ID>k__BackingField: 5
     <Size>k__BackingField: {x: 1, y: 1}
-    <Prefab>k__BackingField: {fileID: 4698450151710010743, guid: 9b109b5cfd6ff98429202bc839b576f3,
+    <Prefab>k__BackingField: {fileID: 919132149155446097, guid: 6ae11229afdd02248a4eca4bbc0e2f8d,
       type: 3}
-  - <Name>k__BackingField: Rock
+  - <Name>k__BackingField: RoofSide
     <ID>k__BackingField: 6
-    <Size>k__BackingField: {x: 2, y: 1}
-    <Prefab>k__BackingField: {fileID: 3347996736547578827, guid: e3a22e6d90c9d9b4a9ea63137d8c4625,
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 919132149155446097, guid: ac942b95ab37d284086d6c8112f18cdc,
       type: 3}
   - <Name>k__BackingField: Tree
     <ID>k__BackingField: 4

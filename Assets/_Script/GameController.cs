@@ -5,17 +5,11 @@ public class GameController : MonoBehaviour
 {
     public Camera playerCamera;
     public Camera buildCamera;
-    public Camera leftCamera;
-    public Camera rightCamera;
-    public Camera behindCamera;
     public GameObject Panel;
-    public GameObject ButtonKhusus;
     public Button buildButton;
     public Button saveButton;
     public Button backButton;
     public Button removeButton;
-    public Button nextButton;
-    public Button previousButton;
     private bool isPlacing = false;
     private bool isBuilding = false;
 
@@ -25,14 +19,10 @@ public class GameController : MonoBehaviour
     public void Start()
     {
         // Menonaktifkan semua elemen UI selain BuildButton
-        ButtonKhusus.SetActive(false);
         Panel.SetActive(false);
         saveButton.gameObject.SetActive(false);
         backButton.gameObject.SetActive(false);
         buildCamera.gameObject.SetActive(false);
-        leftCamera.gameObject.SetActive(false);
-        rightCamera.gameObject.SetActive(false);
-        behindCamera.gameObject.SetActive(false);
 
         // Menambahkan listener untuk tombol
         buildButton.onClick.AddListener(StartBuildMode);
@@ -47,19 +37,13 @@ public class GameController : MonoBehaviour
         // Alihkan ke Build Camera
         playerCamera.gameObject.SetActive(false);
         buildCamera.gameObject.SetActive(true);
-        rightCamera.gameObject.SetActive(false);
-        leftCamera.gameObject.SetActive(false);
-        behindCamera.gameObject.SetActive(false);
 
         // Tampilkan elemen Build Mode
-        ButtonKhusus.SetActive(true);
         Panel.SetActive(true);
         buildButton.gameObject.SetActive(false);
         saveButton.gameObject.SetActive(true);
         backButton.gameObject.SetActive(true);
         removeButton.gameObject.SetActive(true);
-        nextButton.gameObject.SetActive(true);
-        previousButton.gameObject.SetActive(true);
     }
 
     public void EndBuildMode()
@@ -70,18 +54,14 @@ public class GameController : MonoBehaviour
 
         // Alihkan ke Build Camera
         playerCamera.gameObject.SetActive(true);
-
         buildCamera.gameObject.SetActive(false);
 
         // Tampilkan elemen Build Mode
-        ButtonKhusus.SetActive(false);
         Panel.SetActive(false);
         buildButton.gameObject.SetActive(true);
         saveButton.gameObject.SetActive(false);
         backButton.gameObject.SetActive(false);
         removeButton.gameObject.SetActive(false);
-        nextButton.gameObject.SetActive(false);
-        previousButton.gameObject.SetActive(false);
 
         // Bebaskan kursor untuk interaksi UI
         Cursor.lockState = CursorLockMode.None;
@@ -115,7 +95,6 @@ public class GameController : MonoBehaviour
     {
         // Pergerakan kamera di sumbu X (maju mundur)
         float moveDirection = Input.GetAxis("Vertical") * movementSpeed * Time.deltaTime;
-        Debug.Log(moveDirection);
         // Menggerakkan kamera dengan menggunakan input W dan S
         Vector3 movement = playerCamera.transform.forward * moveDirection;
         movement.y = 0; // Menghilangkan pergerakan di sumbu Y
