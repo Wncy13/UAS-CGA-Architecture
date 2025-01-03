@@ -10,6 +10,13 @@ public class PlacedObject
     public int objectID;
 }
 
+[System.Serializable]
+public class PlacedObject
+{
+    public Vector3Int position;
+    public int objectID;
+}
+
 public class PlacementSystem : MonoBehaviour
 {
     public Camera mainCamera;
@@ -53,6 +60,10 @@ public class PlacementSystem : MonoBehaviour
 
     [SerializeField]
     private SoundFeedback soundFeedback;
+    [SerializeField]
+    private Camera mainCamera;
+
+    private List<PlacedObject> placedObjects = new List<PlacedObject>();
 
     private List<PlacedObject> placedObjects = new List<PlacedObject>();
 

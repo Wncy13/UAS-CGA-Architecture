@@ -1,0 +1,3 @@
+repository "UAS dummy/UAS dummy@18968103459624@cloud"
+  path "/"
+    smartbranch "/main/luis"
