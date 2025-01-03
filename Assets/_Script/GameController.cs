@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     public Camera rightCamera;
     public Camera behindCamera;
     public GameObject Panel;
+    public GameObject InventoryManager;
     public GameObject ButtonKhusus;
     public Button buildButton;
     public Button saveButton;
@@ -26,6 +27,7 @@ public class GameController : MonoBehaviour
     {
         // Menonaktifkan semua elemen UI selain BuildButton
         ButtonKhusus.SetActive(false);
+        InventoryManager.SetActive(false);
         Panel.SetActive(false);
         saveButton.gameObject.SetActive(false);
         backButton.gameObject.SetActive(false);
@@ -50,6 +52,7 @@ public class GameController : MonoBehaviour
         rightCamera.gameObject.SetActive(false);
         leftCamera.gameObject.SetActive(false);
         behindCamera.gameObject.SetActive(false);
+        InventoryManager.SetActive(false);
 
         // Tampilkan elemen Build Mode
         ButtonKhusus.SetActive(true);
@@ -60,6 +63,14 @@ public class GameController : MonoBehaviour
         removeButton.gameObject.SetActive(true);
         nextButton.gameObject.SetActive(true);
         previousButton.gameObject.SetActive(true);
+    }
+
+    public void InventoryChange(){
+        if (InventoryManager.activeSelf == false){
+            InventoryManager.SetActive(true);
+        } else {
+            InventoryManager.SetActive(false);
+        }
     }
 
     public void EndBuildMode()
