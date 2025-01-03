@@ -25,7 +25,7 @@ MonoBehaviour:
       type: 3}
   - <Name>k__BackingField: Door
     <ID>k__BackingField: 2
-    <Size>k__BackingField: {x: 1, y: 1}
+    <Size>k__BackingField: {x: 2, y: 2}
     <Prefab>k__BackingField: {fileID: 919132149155446097, guid: 8de9e56c5b54d4e4b95d88cd603d011d,
       type: 3}
   - <Name>k__BackingField: Window
@@ -33,18 +33,18 @@ MonoBehaviour:
     <Size>k__BackingField: {x: 2, y: 1}
     <Prefab>k__BackingField: {fileID: 919132149155446097, guid: f01ad31586a979d428d81af7506204eb,
       type: 3}
-  - <Name>k__BackingField: Half-Wall
+  - <Name>k__BackingField: Wall-Half
     <ID>k__BackingField: 4
-    <Size>k__BackingField: {x: 1, y: 1}
+    <Size>k__BackingField: {x: 1, y: 3}
     <Prefab>k__BackingField: {fileID: 919132149155446097, guid: 0ef2464dfa014b1438debc20db5a11d4,
       type: 3}
   - <Name>k__BackingField: Roof
     <ID>k__BackingField: 5
     <Size>k__BackingField: {x: 1, y: 1}
-    <Prefab>k__BackingField: {fileID: 919132149155446097, guid: 6ae11229afdd02248a4eca4bbc0e2f8d,
+    <Prefab>k__BackingField: {fileID: 919132149155446097, guid: 7e758d9cd35af1541a20cb818ee69d4b,
       type: 3}
-  - <Name>k__BackingField: RoofSide
+  - <Name>k__BackingField: Roof-side
     <ID>k__BackingField: 6
-    <Size>k__BackingField: {x: 1, y: 1}
+    <Size>k__BackingField: {x: 2, y: 1}
     <Prefab>k__BackingField: {fileID: 919132149155446097, guid: ac942b95ab37d284086d6c8112f18cdc,
       type: 3}
