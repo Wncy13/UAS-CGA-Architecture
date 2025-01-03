@@ -5,11 +5,18 @@ public class GameController : MonoBehaviour
 {
     public Camera playerCamera;
     public Camera buildCamera;
+    public Camera leftCamera;
+    public Camera rightCamera;
+    public Camera behindCamera;
     public GameObject Panel;
+    public GameObject InventoryManager;
+    public GameObject ButtonKhusus;
     public Button buildButton;
     public Button saveButton;
     public Button backButton;
     public Button removeButton;
+    public Button nextButton;
+    public Button previousButton;
     private bool isPlacing = false;
     private bool isBuilding = false;
 
@@ -19,10 +26,15 @@ public class GameController : MonoBehaviour
     public void Start()
     {
         // Menonaktifkan semua elemen UI selain BuildButton
+        ButtonKhusus.SetActive(false);
+        InventoryManager.SetActive(false);
         Panel.SetActive(false);
         saveButton.gameObject.SetActive(false);
         backButton.gameObject.SetActive(false);
         buildCamera.gameObject.SetActive(false);
+        leftCamera.gameObject.SetActive(false);
+        rightCamera.gameObject.SetActive(false);
+        behindCamera.gameObject.SetActive(false);
 
         // Menambahkan listener untuk tombol
         buildButton.onClick.AddListener(StartBuildMode);
@@ -37,13 +49,32 @@ public class GameController : MonoBehaviour
         // Alihkan ke Build Camera
         playerCamera.gameObject.SetActive(false);
         buildCamera.gameObject.SetActive(true);
+        rightCamera.gameObject.SetActive(false);
+        leftCamera.gameObject.SetActive(false);
+        behindCamera.gameObject.SetActive(false);
+        InventoryManager.SetActive(false);
 
         // Tampilkan elemen Build Mode
+        ButtonKhusus.SetActive(true);
         Panel.SetActive(true);
         buildButton.gameObject.SetActive(false);
         saveButton.gameObject.SetActive(true);
         backButton.gameObject.SetActive(true);
         removeButton.gameObject.SetActive(true);
+        nextButton.gameObject.SetActive(true);
+        previousButton.gameObject.SetActive(true);
+    }
+
+    public void InventoryChange()
+    {
+        if (InventoryManager.activeSelf == false)
+        {
+            InventoryManager.SetActive(true);
+        }
+        else
+        {
+            InventoryManager.SetActive(false);
+        }
     }
 
     public void EndBuildMode()
@@ -54,14 +85,18 @@ public class GameController : MonoBehaviour
 
         // Alihkan ke Build Camera
         playerCamera.gameObject.SetActive(true);
+
         buildCamera.gameObject.SetActive(false);
 
         // Tampilkan elemen Build Mode
+        ButtonKhusus.SetActive(false);
         Panel.SetActive(false);
         buildButton.gameObject.SetActive(true);
         saveButton.gameObject.SetActive(false);
         backButton.gameObject.SetActive(false);
         removeButton.gameObject.SetActive(false);
+        nextButton.gameObject.SetActive(false);
+        previousButton.gameObject.SetActive(false);
 
         // Bebaskan kursor untuk interaksi UI
         Cursor.lockState = CursorLockMode.None;
@@ -93,14 +128,40 @@ public class GameController : MonoBehaviour
 
     void HandleCameraMovement()
     {
-        // Pergerakan kamera di sumbu X (maju mundur)
-        float moveDirection = Input.GetAxis("Vertical") * movementSpeed * Time.deltaTime;
-        // Menggerakkan kamera dengan menggunakan input W dan S
-        Vector3 movement = playerCamera.transform.forward * moveDirection;
-        movement.y = 0; // Menghilangkan pergerakan di sumbu Y
+        Debug.Log("ini handlecamera");
+        Rigidbody rb = playerCamera.GetComponent<Rigidbody>();
 
-        playerCamera.transform.position += movement; // Menggerakkan kamera
+        // Pergerakan posisi kamera
+        float horizontalMovement = Input.GetAxis("Horizontal") * movementSpeed * Time.fixedDeltaTime; // A dan D untuk kiri/kanan
+        float verticalMovement = Input.GetAxis("Vertical") * movementSpeed * Time.fixedDeltaTime; // W dan S untuk maju/mundur
+
+        // Mendapatkan arah pergerakan berdasarkan orientasi kamera
+        Vector3 forwardMovement = playerCamera.transform.forward * verticalMovement;
+        Vector3 rightMovement = playerCamera.transform.right * horizontalMovement;
+
+        // Menggabungkan semua pergerakan
+        Vector3 movement = forwardMovement + rightMovement;
+
+        // Gerakkan kamera dengan Rigidbody
+        rb.MovePosition(rb.position + movement);
+
+        // Rotasi kamera dengan mouse
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+
+        // Rotasi horizontal (yaw)
+        playerCamera.transform.Rotate(Vector3.up * mouseX, Space.World);
+
+        // Rotasi vertikal (pitch)
+        Vector3 currentRotation = playerCamera.transform.localEulerAngles;
+        float pitch = currentRotation.x;
+        if (pitch > 180) pitch -= 360;
+
+        float newPitch = Mathf.Clamp(pitch - mouseY, -89f, 89f);
+        playerCamera.transform.localEulerAngles = new Vector3(newPitch, currentRotation.y, 0);
     }
+
+
 
     void HandlePlacement()
     {
