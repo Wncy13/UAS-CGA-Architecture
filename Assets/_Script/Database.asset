@@ -58,3 +58,23 @@ MonoBehaviour:
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 919132149155446097, guid: 5c0fa543864ff1645924972a8704ec7d,
       type: 3}
+  - <Name>k__BackingField: Trash
+    <ID>k__BackingField: 9
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 919132149155446097, guid: 7ae441238ecb945b0b3695be8b697e4e,
+      type: 3}
+  - <Name>k__BackingField: TrafficCone
+    <ID>k__BackingField: 10
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 919132149155446097, guid: 4763bbf4887ca411ab3e27d26fcbe415,
+      type: 3}
+  - <Name>k__BackingField: Taxi
+    <ID>k__BackingField: 11
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 919132149155446097, guid: eddf7e0e581d94c3fb7b302b63488b05,
+      type: 3}
+  - <Name>k__BackingField: Fence
+    <ID>k__BackingField: 12
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 6640174995143383478, guid: 55994d471996942828c8e8550037daef,
+      type: 3}
