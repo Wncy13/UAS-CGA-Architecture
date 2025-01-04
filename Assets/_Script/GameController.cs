@@ -20,8 +20,10 @@ public class GameController : MonoBehaviour
     private bool isPlacing = false;
     private bool isBuilding = false;
 
-    public float mouseSensitivity = 50f;
-    public float movementSpeed = 10f;
+    public float mouseSensitivity = 25f; // Reduced for slower mouse rotation
+    public float movementSpeed = 1f; // Reduced for slower movement
+
+    public LayerMask placementLayerMask; // Layer mask for placement
 
     public void Start()
     {
@@ -65,12 +67,9 @@ public class GameController : MonoBehaviour
         previousButton.gameObject.SetActive(true);
     }
 
-    public void InventoryChange(){
-        if (InventoryManager.activeSelf == false){
-            InventoryManager.SetActive(true);
-        } else {
-            InventoryManager.SetActive(false);
-        }
+    public void InventoryChange()
+    {
+        InventoryManager.SetActive(!InventoryManager.activeSelf);
     }
 
     public void EndBuildMode()
@@ -79,12 +78,12 @@ public class GameController : MonoBehaviour
         isBuilding = false;
         isPlacing = false;
 
-        // Alihkan ke Build Camera
+        // Alihkan ke kamera utama
         playerCamera.gameObject.SetActive(true);
 
         buildCamera.gameObject.SetActive(false);
 
-        // Tampilkan elemen Build Mode
+        // Sembunyikan elemen Build Mode
         ButtonKhusus.SetActive(false);
         Panel.SetActive(false);
         buildButton.gameObject.SetActive(true);
@@ -101,54 +100,54 @@ public class GameController : MonoBehaviour
 
     public void Update()
     {
-        // Kontrol kamera hanya saat tidak dalam mode build
         if (!isBuilding)
         {
             HandleCameraMovement();
         }
         else
         {
-            // Cek jika tombol Home ditekan saat dalam mode Build
             if (Input.GetKeyDown(KeyCode.Home))
             {
                 isBuilding = false;
-                EndBuildMode(); // Mengembalikan ke mode kamera utama
+                EndBuildMode();
             }
 
             if (isPlacing)
             {
-                HandlePlacement(); // Menangani proses placement objek
+                HandlePlacement();
             }
         }
     }
 
     void HandleCameraMovement()
     {
-        Debug.Log("ini handlecamera");
         Rigidbody rb = playerCamera.GetComponent<Rigidbody>();
 
-        // Pergerakan posisi kamera
-        float horizontalMovement = Input.GetAxis("Horizontal") * movementSpeed * Time.fixedDeltaTime; // A dan D untuk kiri/kanan
-        float verticalMovement = Input.GetAxis("Vertical") * movementSpeed * Time.fixedDeltaTime; // W dan S untuk maju/mundur
+        if (rb == null)
+        {
+            Debug.LogError("Rigidbody is not attached to the playerCamera!");
+            return;
+        }
 
-        // Mendapatkan arah pergerakan berdasarkan orientasi kamera
+        // Get movement inputs
+        float horizontalMovement = Input.GetAxis("Horizontal") * movementSpeed;
+        float verticalMovement = Input.GetAxis("Vertical") * movementSpeed;
+
+        // Calculate movement direction
         Vector3 forwardMovement = playerCamera.transform.forward * verticalMovement;
         Vector3 rightMovement = playerCamera.transform.right * horizontalMovement;
 
-        // Menggabungkan semua pergerakan
-        Vector3 movement = forwardMovement + rightMovement;
+        Vector3 movement = (forwardMovement + rightMovement).normalized * movementSpeed * Time.fixedDeltaTime;
 
-        // Gerakkan kamera dengan Rigidbody
+        // Move the Rigidbody
         rb.MovePosition(rb.position + movement);
 
-        // Rotasi kamera dengan mouse
+        // Rotate with mouse input
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        // Rotasi horizontal (yaw)
         playerCamera.transform.Rotate(Vector3.up * mouseX, Space.World);
 
-        // Rotasi vertikal (pitch)
         Vector3 currentRotation = playerCamera.transform.localEulerAngles;
         float pitch = currentRotation.x;
         if (pitch > 180) pitch -= 360;
@@ -157,15 +156,25 @@ public class GameController : MonoBehaviour
         playerCamera.transform.localEulerAngles = new Vector3(newPitch, currentRotation.y, 0);
     }
 
-
-
     void HandlePlacement()
     {
-        // Cek input untuk menempatkan objek
-        if (Input.GetMouseButtonDown(0)) // Tombol kiri mouse untuk menempatkan objek
+        if (Input.GetMouseButtonDown(0)) // Left mouse button for placing objects
         {
-            // Logika placement objek, bisa menambahkan objek ke dunia atau memulai proses lainnya
-            Debug.Log("Placement done!");
+            Ray ray = buildCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, placementLayerMask))
+            {
+                Debug.Log("Placement location valid at: " + hit.point);
+
+                // Logika untuk menempatkan objek di lokasi yang valid
+                GameObject newObject = Instantiate(ButtonKhusus, hit.point, Quaternion.identity);
+                newObject.transform.position = hit.point;
+            }
+            else
+            {
+                Debug.LogWarning("Placement location invalid!");
+            }
         }
     }
 }
